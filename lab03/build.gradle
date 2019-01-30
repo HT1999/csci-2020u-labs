@@ -18,4 +18,21 @@ dependencies {
   implementation 'org.apache.commons:commons-csv:1.6'
 }
 
+jar {
+
+	manifest {
+
+  attributes	'Main-Class': 'csci2020u.lab03.CSVDemo',
+
+              'Implementation-Title': 'CSV Demo Gradle Test',
+
+              'Implementation-Version': 1.0
+
+	}
+
+}
+
+task(minify, type: JavaExec) {
+  main = 'csci2020u.lab03.CSVDemo'
+}
 apply plugin: 'java'
