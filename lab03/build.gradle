@@ -1,5 +1,21 @@
+buildscript {
+    repositories {
+        flatDir dirs: '/mnt/c/csci2020u/proguard6.0.3/lib'
+    }
+    dependencies {
+        classpath ':proguard:'
+    }
+}
+
 plugins {
   id 'application'
+}
+
+task(minify, dependsOn: 'jar', type: proguard.gradle.ProGuardTask){
+    configuration 'proguard.cfg'
+
+    injars 'build/libs/lab03.jar'
+    outjars 'build/libs/lab03.min.jar'
 }
 
 repositories {
@@ -32,7 +48,4 @@ jar {
 
 }
 
-task(minify, type: JavaExec) {
-  main = 'csci2020u.lab03.CSVDemo'
-}
 apply plugin: 'java'
